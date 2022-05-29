@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>理解attention</title>
+      <link href="/2022/05/29/%E7%90%86%E8%A7%A3attention/"/>
+      <url>/2022/05/29/%E7%90%86%E8%A7%A3attention/</url>
+      
+        <content type="html"><![CDATA[<p>知乎上的一篇文章，记录一下</p><span id="more"></span><p><a href="https://zhuanlan.zhihu.com/p/91839581">一文看懂 Attention（本质原理+3大优点+5大类型</a></p><p><a href="https://easyai.tech/ai-definition/encoder-decoder-seq2seq/">Encoder-Decoder 和 Seq2Seq</a></p><p><a href="https://easyai.tech/">nlp学习网站</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> nlp </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> attention </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Predicting issue types on GitHub</title>
       <link href="/2022/05/26/Predicting-issue-types-on-GitHub/"/>
       <url>/2022/05/26/Predicting-issue-types-on-GitHub/</url>
