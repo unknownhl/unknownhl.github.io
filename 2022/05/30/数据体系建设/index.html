@@ -44,7 +44,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2022-05-30T07:20:28.000Z">
-<meta property="article:modified_time" content="2022-05-30T08:00:34.211Z">
+<meta property="article:modified_time" content="2022-05-31T05:40:22.234Z">
 <meta property="article:author" content="黄黎">
 <meta property="article:tag" content="数据中台">
 <meta name="twitter:card" content="summary">
@@ -1881,7 +1881,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: true,
     cdn: {"js":{"app":"/js/app.e546c981.js","parallax":"/js/plugins/parallax.8bf0ab10.js","rightMenu":"/js/plugins/rightMenu.d9437285.js","rightMenus":"/js/plugins/rightMenus.cd02aa19.js","sites":"/js/plugins/tags/sites.76bf19b8.js","friends":"/js/plugins/tags/friends.f372da57.js","contributors":"/js/plugins/tags/contributors.aec80453.js","search":"/js/search/hexo.0e52f222.js"},"css":{"style":"/css/style.89171c65.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1649552113628/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1649552113628/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1649552113628/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1649552113628/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1653897643669),
+    lastupdate: new Date(1653975654907),
     sidebar: {
       for_page: ["qgroup","post","category","guide"],
       for_post: ["toc"],
@@ -2653,13 +2653,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：645 字</p>
+      <p>字数：2.1k 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
-      <p>时长：2 分钟</p>
+      <p>时长：6 分钟</p>
     </a>
   </div>
 
@@ -2694,6 +2694,30 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>（5）启动同步任务，往贴源数据层目标表导入数据；</p>
 <p>（6）验证任务是否可以正确运行，并且采集到准确数据；</p>
 <p>（7）发布采集任务，加入生产调度，并配置相关限速、容错、质量监控、告警机制。</p>
+</blockquote>
+<h3 id="统一数仓层—标准化的数据底座"><a href="#统一数仓层—标准化的数据底座" class="headerlink" title="统一数仓层—标准化的数据底座"></a>统一数仓层—标准化的数据底座</h3><p>统一数仓层站在业务的视角，不考虑业务系统流程，从业务完整性的角度重新组织数据。统一数仓层的目标是建设一套覆盖全域、全历史的企业数据体系，利用这套数据体系可以还原企业任意时刻的业务运转状态。有范式建模、维度建模和实体建模三种建模方式。</p>
+<p>统一数仓层建设过程以维度建模为理论基础，构建总线矩阵，划分业务板块，定义数据域、业务过程、维度、原子指标、修饰类型、修饰词、时间周期、派生指标，进而确定维度表、事实表的模型设计。</p>
+<blockquote>
+<p>业务板块：根据业务的属性划分出的相对独立的业务板块。</p>
+<p>模型设计：以建模理论为基础，基于维度建模总线架构，构建一致性的维度和事实，同时设计出一套表命名规范。</p>
+<p>数据域：数据域是统一数仓层的顶层划分，是一个较高层次的数据归类标准，是对企业业务过程进行抽象、提炼、组合的集合。</p>
+<p>业务过程：业务过程是一种企业的业务活动事件，且是企业经营过程中不可拆分的行为事件。业务过程产生度量，并且会被转换为最终的事实表中的事实。</p>
+<p>修饰词：修饰词指除维度以外的对指标进行限定抽象的业务场景词语，修饰词隶属于一个修饰类型。比如，在日志域的访问类型下，有修饰词PC、无线端。</p>
+<p>原子指标：原子指标是针对某一业务事件行为的度量，是一种不可拆分的指标，具有明确业务含义，比如支付金额。原子指标有确定的字段名称、数据类型、算法说明、所属数据域和业务过程。<u>原子指标名称一般采用“动作+度量”方式命名</u>，比如支付金额、注册用户数。</p>
+<p>派生指标：派生指标可以理解为对原子指标业务统计范围的圈定，比如最近一天北京买家支付金额（“最近一天”是时间周期，“北京”是修饰词，修饰词“买家”是维度）。<u>派生指标&#x3D;1个原子指标+多个修饰词+时间修饰词</u>。</p>
+<p>计算方法：指标的数学计算方式，比如汇总、平均、最大、最小等。</p>
+<p><strong>维度表</strong>：维度是观察事物的角度，提供某一业务过程事件所涉及的用于过滤及分类事实的描述性属性，用于描述“谁、什么、哪里、何时、为什么、如何”（5W1H）有关的事件。比如“早上黄黎在食堂花费5元钱购买了一碗小面”，以购买为业务过程进行分析，可从这段信息中提取三个维度，即时间维度（早上）、地点维度（食堂）和商品维度（小面）。维度表是统一设计的，在整个数据仓库中共享，所有数据域、业务过程都需要用到维度，都可以在公共维度表中获取相关维度属性。</p>
+<p><strong>事实表</strong>：事实是观察事物得到的事实数据，事实涉及来自业务过程事件的度量，基本都是以数量值表示，比如一次购买行为就可以理解为是一个事实，5元就是事实信息。在确定数据域与业务过程后，就可以根据业务过程涉及的维度、度量及粒度，涉及相关的事实表。事实表不跨数据域，根据需要，一个事实表可能对应同数据域下一个或者多个业务过程。事实表又分为明细事实表和汇总事实表。<u>明细事实表记录事物层面的事实，保存的是原子数据，数据的粒度通常是每个事务一条记录，明细事实表数据被插入，数据就不再进行更改，其更新方式为增量更新</u>。<u>汇总事实表是把明细事实聚合形成的事实表</u>，包括以具有规律性的、可预见的时间间隔来记录事实的周期快照事实表和以不确定的周期来记录事实的累计快照事实表。</p>
+<p>粒度：粒度是指统一数仓层数据的细化或者综合程度，对各事实表行实际代表的内容给出明确的说明，用于确定某一事实表中的行表示什么。确定维度或者事实之前必须声明粒度，因为每个维度和事实都必须与定义的粒度保持一致。原子粒度是最低级别的粒度，是对业务过程最详细的刻画，原子粒度事实必须保留。</p>
+<p>一致性指标定义：指标归属到具体的数据域，定义指标的含义、命名、类型、计算方法，确保指标的全局一致性。</p>
+</blockquote>
+<p>统一数仓层落地实施的具体步骤如下：</p>
+<blockquote>
+<p>（1）按照命名规范创建表，包括维度表和事实表；</p>
+<p>（2）开发生成维表和事实表的数据的逻辑代码；</p>
+<p>（3）进行代码逻辑测试，验证数据加工逻辑的正确性；</p>
+<p>（4）代码发布，加入生产调度，并配置相应的质量监控和报警机制；</p>
+<p>（5）持续任务运维监控。</p>
 </blockquote>
 
 
@@ -2765,7 +2789,7 @@ Encoder-Decoder 和 Seq...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%B4%E6%BA%90%E6%95%B0%E6%8D%AE%E5%B1%82"><span class="toc-number">1.</span> <span class="toc-text">贴源数据层</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%B4%E6%BA%90%E6%95%B0%E6%8D%AE%E5%B1%82"><span class="toc-number">1.</span> <span class="toc-text">贴源数据层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E6%95%B0%E4%BB%93%E5%B1%82%E2%80%94%E6%A0%87%E5%87%86%E5%8C%96%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%95%E5%BA%A7"><span class="toc-number">2.</span> <span class="toc-text">统一数仓层—标准化的数据底座</span></a></li></ol>
     </div>
   </section>
 
@@ -3899,7 +3923,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/012.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1649552113628/media/wallpaper/minimalist/2020/003.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4272,7 +4296,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"HL","url":"https://unknownhl.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"黄黎","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://unknownhl.github.io/","sameAs":["https://github.com/volantis-x"],"description":"黄黎的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://unknownhl.github.io/","name":"HL"}},{"@type":"ListItem","position":2,"item":{"@id":"https://unknownhl.github.io/categories/大数据/","name":"大数据"}},{"@type":"ListItem","position":3,"item":{"@id":"https://unknownhl.github.io/2022/05/30/数据体系建设/","name":"数据体系建设"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"HL","url":"https://unknownhl.github.io/","keywords":null,"description":"黄黎的博客","author":{"@type":"Person","name":"黄黎","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://unknownhl.github.io/","description":"黄黎的博客"},"publisher":{"@type":"Organization","name":"HL","url":"https://unknownhl.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://unknownhl.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"数据体系建设","description":"《数据中台–让数据用起来》一书中的数据体系建设。\n数据中台数据体系是在全域原始数据的基础上，进行标准定义及分层建模，数据体系建设最终呈现的结果是一套完整、规范、准确的数据体系，可以方便支撑数据应用。","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://unknownhl.github.io/2022/05/30/%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB%E5%BB%BA%E8%AE%BE/"},"author":{"@type":"Person","name":"黄黎","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://unknownhl.github.io/"},"publisher":{"@type":"Organization","name":"HL","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://unknownhl.github.io/2022/05/30/%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB%E5%BB%BA%E8%AE%BE/","wordCount":99,"datePublished":"2022-05-30T07:20:28.000Z","dateModified":"2022-05-30T08:00:34.211Z","articleSection":"大数据","keywords":"数据中台","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"HL","url":"https://unknownhl.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"黄黎","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://unknownhl.github.io/","sameAs":["https://github.com/volantis-x"],"description":"黄黎的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://unknownhl.github.io/","name":"HL"}},{"@type":"ListItem","position":2,"item":{"@id":"https://unknownhl.github.io/categories/大数据/","name":"大数据"}},{"@type":"ListItem","position":3,"item":{"@id":"https://unknownhl.github.io/2022/05/30/数据体系建设/","name":"数据体系建设"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"HL","url":"https://unknownhl.github.io/","keywords":null,"description":"黄黎的博客","author":{"@type":"Person","name":"黄黎","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://unknownhl.github.io/","description":"黄黎的博客"},"publisher":{"@type":"Organization","name":"HL","url":"https://unknownhl.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://unknownhl.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"数据体系建设","description":"《数据中台–让数据用起来》一书中的数据体系建设。\n数据中台数据体系是在全域原始数据的基础上，进行标准定义及分层建模，数据体系建设最终呈现的结果是一套完整、规范、准确的数据体系，可以方便支撑数据应用。","inLanguage":["zh-CN","en","zh-HK","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://unknownhl.github.io/2022/05/30/%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB%E5%BB%BA%E8%AE%BE/"},"author":{"@type":"Person","name":"黄黎","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://unknownhl.github.io/"},"publisher":{"@type":"Organization","name":"HL","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://unknownhl.github.io/2022/05/30/%E6%95%B0%E6%8D%AE%E4%BD%93%E7%B3%BB%E5%BB%BA%E8%AE%BE/","wordCount":99,"datePublished":"2022-05-30T07:20:28.000Z","dateModified":"2022-05-31T05:40:22.234Z","articleSection":"大数据","keywords":"数据中台","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1649552113628/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
